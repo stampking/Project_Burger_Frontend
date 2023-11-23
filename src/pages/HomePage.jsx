@@ -2,17 +2,13 @@ import { GiForkKnifeSpoon } from "react-icons/gi";
 import { MdOutlineWaterDrop } from "react-icons/md";
 import { LuLeafyGreen } from "react-icons/lu";
 
-// import Category from "../layout/Category";
-import AboutPage from "./AboutPage";
-// import Menu from "./MenuPage";
-// import Cart from "./CartPage";
-// import Contact from "./Contact";
 import Footer from "./FooterPage";
 
-// import RegisterPage from "./RegisterPage";
-// import LoginPage from "./LoginPage";
-
 import HomeNav from "../layout/header/HomeNavbar";
+
+import PaymentPage from "./PaymentPage";
+import Header from "../layout/Header";
+
 export default function HomePage() {
   return (
     <section>
@@ -57,17 +53,6 @@ export default function HomePage() {
           </a>
         </div>
       </div>
-      {/* <Category /> */}
-      <AboutPage />
-      {/* <Menu /> */}
-
-      {/* <Contact /> */}
-      <Footer />
-      {/* <RegisterPage /> */}
-      {/* <LoginPage /> */}
-
-      <HomeNav />
-      {/* <Cart /> */}
     </section>
   );
 }

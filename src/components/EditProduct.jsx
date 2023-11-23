@@ -1,9 +1,8 @@
-
 import { useState, useRef } from "react";
 import useProduct from "../hooks/use-product";
-import { PencilIcon, SaveIcon, CloseIcon } from "../icons/index";
+// import { PencilIcon, SaveIcon, CloseIcon } from "../icons/index";
 
-export default function RowEditProduct({
+export default function EditProduct({
   id,
   name,
   amount,
@@ -64,7 +63,7 @@ export default function RowEditProduct({
   return (
     <tr
       key={id}
-      className="bg-white border-b hover:bg-orange-100 hover:font-semibold"
+      className="bg-black border-b hover:font-semibold text-slate-600"
     >
       <td className="text-center ">{id}</td>
       <td className="p-4">
@@ -96,7 +95,7 @@ export default function RowEditProduct({
           price
         )}
       </td>
-      <td className="text-center">
+      {/* <td className="text-center">
         <div className="dropdown">
           <label tabIndex={0} className="btn m-1">
             {productStatus === "AVAILABLE" ? (
@@ -130,26 +129,26 @@ export default function RowEditProduct({
             ""
           )}
         </div>
-      </td>
+      </td> */}
       <td
         onClick={isEditMode ? updateEditRow : handleOnClick}
         className="cursor-pointer"
       >
         {isEditMode ? (
           <span>
-            <SaveIcon />
+            {/* <SaveIcon /> */}
             &nbsp; DONE
           </span>
         ) : (
           <span>
-            <PencilIcon />
+            {/* <PencilIcon /> */}
             &nbsp; EDIT
           </span>
         )}
       </td>
       <td onClick={deleteProductRow} className="cursor-pointer">
         <span>
-          <CloseIcon />
+          {/* <CloseIcon /> */}
           &nbsp; DELETE
         </span>
       </td>

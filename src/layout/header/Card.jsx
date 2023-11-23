@@ -1,4 +1,4 @@
-export default function Card() {
+export default function Card({ name, image, price }) {
   return (
     <div className=" bg-secondaryColor flex py-3 rounded-lg overflow-hidden md:flex-1">
       <div className=" basis-1/3 relative">

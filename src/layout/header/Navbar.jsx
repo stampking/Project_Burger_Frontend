@@ -1,14 +1,23 @@
 import { GrFormClose } from "react-icons/gr";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LuShoppingCart } from "react-icons/lu";
+import { useAuth } from "../../hooks/use-auth";
+import { useNavigate } from "react-router-dom";
 // import { PiMoon } from "react-icons/pi";
 
 export default function Navbar() {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("");
+  };
   return (
     <div className=" bg-blackColor fixed top-0 left-0 w-full z-50">
       <nav className="container relative h-14 flex justify-between items-center">
         <div>
-          <a href="#" className="text-2xl uppercase font-oswald ">
+          <a className="text-2xl uppercase font-oswald ">
             Bur<span className="text-secondaryColor ">ger</span>
           </a>
         </div>
@@ -19,45 +28,33 @@ export default function Navbar() {
         >
           <ul className="flex flex-col text-center gap-5 md:flex-row">
             <li>
-              <a
-                href="#home"
-                className="nav__link hover:text-secondaryColor ease-in duration-200"
-              >
+              <a className="nav__link hover:text-secondaryColor ease-in duration-200">
                 Home
               </a>
             </li>
             <li>
-              <a
-                href="#menu"
-                className="nav__link hover:text-secondaryColor ease-in duration-200"
-              >
+              <a className="nav__link hover:text-secondaryColor ease-in duration-200">
                 Menu
               </a>
             </li>
             <li>
-              <a
-                href="#about"
-                className="nav__link hover:text-secondaryColor ease-in duration-200"
-              >
+              <a className="nav__link hover:text-secondaryColor ease-in duration-200">
                 About Us
               </a>
             </li>
+
             <li>
-              <a
-                href="#contact"
-                className="nav__link hover:text-secondaryColor ease-in duration-200"
-              >
-                Contact
-              </a>
-            </li>
-            <li>
-              <a
-                href="#cart"
-                className="nav__link hover:text-secondaryColor ease-in duration-200"
-              >
+              <a className="nav__link hover:text-secondaryColor ease-in duration-200">
                 <LuShoppingCart className=" text-xl" />
               </a>
             </li>
+            <div onClick={handleLogout} className="cursor-pointer">
+              <li>
+                <a className="nav__link hover:text-secondaryColor ease-in duration-200">
+                  Logout
+                </a>
+              </li>
+            </div>
           </ul>
 
           <div

@@ -1,14 +1,19 @@
-import "./App.css";
-// import HomePage from "./pages/HomePage";
-// import Navbar from "./layout/header/Navbar";
-import AuthContextProviderovider from "../src/Contexts/AuthContext";
 import Route from "./router/Route";
+import Loading from "./components/Loading";
+import { useAuth } from "./hooks/use-auth";
 
 function App() {
+  const { isLoading } = useAuth();
   return (
-    <AuthContextProviderovider>
-      <Route />
-    </AuthContextProviderovider>
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <Route />
+        </>
+      )}
+    </>
   );
 }
 

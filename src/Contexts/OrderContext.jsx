@@ -8,12 +8,15 @@ export default function OrderContextProvider({ children }) {
   const [createOrderList, setCreateOrderList] = useState([]);
   const [success, setSuccess] = useState(null);
 
+  console.log(createOrderList);
   const getOrder = async () => {
     const res = await axios.get("/order");
     setOrderList(res.data.orders);
   };
+  console.log(orderList);
 
   const createOrder = async (input) => {
+    console.log(input, "showinput");
     const res = await axios.post("/order/create", input);
     setSuccess(res.data.createOrder);
   };

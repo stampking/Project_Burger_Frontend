@@ -9,12 +9,14 @@ export default function ProductContextProvider({ children }) {
   const [success, setSuccess] = useState(false);
 
   const getProduct = async () => {
-    const res = await axios.get("/product");
-
-    if (res.data?.products) {
-      setProductList(res.data.products);
+    try {
+      const { data } = await axios.get("/product");
+      setProductList(data);
+    } catch (error) {
+      console.log(error);
     }
   };
+  // console.log("productList", productList);
 
   const getCreateProduct = async () => {
     const res = await axios.get("/product");

@@ -1,21 +1,17 @@
-// import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 // import useAuth from "../../hooks/use-auth";
-// import { addRole } from "../../utils/Local-storage";
+import { addRole } from "../../utils/local-storage";
+import { useAuth } from "../../hooks/use-auth";
 
-// export default function RedirectIfAuthen({ children }) {
-//   const { authUser } = useAuth();
+export default function RedirectIfAuthen({ children }) {
+  const { authUser } = useAuth();
 
-//   if (authUser?.role) {
-//     addRole(authUser.role);
+  if (authUser?.role === "USER") {
+    return <Navigate to="/menu" />;
+  }
+  if (authUser?.role === "ADMIN") {
+    return <Navigate to="/order/edit" />;
+  }
 
-//     if (authUser?.role === "USER") {
-//       return <Navigate to="/menu" />;
-//     }
-
-//     if (authUser?.role === "ADMIN") {
-//       return <Navigate to="/product/edit" />;
-//     }
-//   }
-
-//   return children;
-// }
+  return children;
+}

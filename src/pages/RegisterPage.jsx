@@ -5,6 +5,8 @@ import { useAuth } from "../hooks/use-auth";
 import Joi from "joi";
 import InputForm from "../components/InputForm";
 import axios from "../config/axios";
+import { useNavigate } from "react-router-dom";
+
 // import { Link } from "react-router-dom";
 
 const registerSchema = Joi.object({
@@ -42,6 +44,8 @@ export default function RegisterPage() {
     confirmPassword: "",
   });
 
+  const navigate = useNavigate();
+
   const [error, setError] = useState({});
   const { register } = useAuth();
 
@@ -51,22 +55,20 @@ export default function RegisterPage() {
 
   const handleSumbitForm = async (e) => {
     e.preventDefault();
-    console.log("clickk");
 
     const validationError = vailidateRegister(input);
-    console.log(validationError);
+
     if (validationError) {
       return setError(validationError);
     }
     setError({});
     const inputNoConfirm = { ...input };
     delete inputNoConfirm.confirmPassword;
-    console.log("ertyuio");
 
-    // await axios.post("/auth/register", inputNoConfirm);
     register(inputNoConfirm).catch((err) => {
       toast.error(err.response.data.message);
     });
+    navigate("/menu");
   };
 
   return (
